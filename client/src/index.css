@@ -1,0 +1,411 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════
+   HealthAI Clinical Design System
+   Calm · Clinical · Trustworthy
+   ═══════════════════════════════════════════════════════════ */
+
+@theme {
+  /* ── Palette ── */
+  --color-paper: #F7F5F1;
+  --color-paper-warm: #F0EDE7;
+  --color-ink: #16302B;
+  --color-ink-light: #2D4A43;
+  --color-ink-muted: #5C6D68;
+  --color-border: #DDD8CE;
+  --color-border-light: #EAE6DE;
+
+  /* Clinical teal accent */
+  --color-teal: #2F6F62;
+  --color-teal-dark: #245A4F;
+  --color-teal-light: #3D8B7A;
+  --color-teal-subtle: #E8F0EE;
+  --color-teal-wash: #F0F6F4;
+
+  /* Amber-clay for attention/flags */
+  --color-amber: #9A6530;
+  --color-amber-light: #B8763B;
+  --color-amber-subtle: #FBF3EB;
+  --color-amber-wash: #F5E6D5;
+
+  /* Sage green for normal/success */
+  --color-sage: #5C8A6E;
+  --color-sage-dark: #4A7359;
+  --color-sage-subtle: #EDF4EF;
+  --color-sage-wash: #D9EAE0;
+
+  /* Emergency red — usability exception for SOS only */
+  --color-emergency: #C0392B;
+  --color-emergency-dark: #A33025;
+  --color-emergency-subtle: #FCEEED;
+  --color-emergency-wash: #F5D5D2;
+
+  /* ── Typography ── */
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Source Sans 3', 'Source Sans Pro', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+/* ═══════════ Base Reset ═══════════ */
+
+* {
+  margin: 0;
+  padding: 0;
+  /* width: 100%; */
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100%;
+
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* min-height: 100vh;x */
+  line-height: 1.6;
+  overflow-x: hidden;
+  /* max-width: 100%; */
+  width: 100%;
+  min-width: 100%;
+}
+
+/* ═══════════ Scrollbar ═══════════ */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-teal);
+}
+
+/* ═══════════ Typography ═══════════ */
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  color: var(--color-ink);
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+/* Signature element: Lab-report field labels
+   Used for form labels, section headers, data field names */
+.field-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+/* Monospace for numeric/data values */
+.data-value {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* ═══════════ Form Inputs ═══════════ */
+
+input,
+textarea,
+select {
+  font-family: var(--font-body);
+  background-color: #FFFFFF;
+  color: var(--color-ink);
+  border: 1px solid var(--color-border);
+  font-size: 0.95rem;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-ink-muted);
+  opacity: 0.6;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 2px rgba(47, 111, 98, 0.15);
+}
+
+/* ═══════════ Cards ═══════════ */
+
+.card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+}
+
+.card-hover {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  border-color: var(--color-teal);
+  box-shadow: 0 2px 8px rgba(47, 111, 98, 0.08);
+}
+
+/* ═══════════ Buttons ═══════════ */
+
+.btn-primary {
+  background-color: var(--color-teal);
+  color: #FFFFFF;
+  border: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-teal-dark);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-teal);
+  background-color: var(--color-teal-wash);
+}
+
+/* Emergency SOS button — deliberately uses red for instant visual urgency */
+.btn-emergency {
+  background-color: var(--color-emergency);
+  color: #FFFFFF;
+  border: 3px solid var(--color-emergency-dark);
+  font-family: var(--font-body);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.btn-emergency:hover {
+  background-color: var(--color-emergency-dark);
+  box-shadow: 0 0 20px rgba(192, 57, 43, 0.35);
+}
+
+.btn-emergency:active {
+  transform: scale(0.97);
+}
+
+/* ═══════════ Badges ═══════════ */
+
+.badge-normal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: var(--color-sage-subtle);
+  color: var(--color-sage-dark);
+  border: 1px solid var(--color-sage-wash);
+}
+
+.badge-attention {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: var(--color-amber-subtle);
+  color: var(--color-amber);
+  border: 1px solid var(--color-amber-wash);
+}
+
+.badge-urgent {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: var(--color-amber-wash);
+  color: var(--color-amber);
+  border: 1px solid var(--color-amber-light);
+}
+
+.badge-pending {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: var(--color-paper-warm);
+  color: var(--color-ink-muted);
+  border: 1px solid var(--color-border);
+}
+
+/* Emergency badge — red, only for SOS contexts */
+.badge-emergency {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: var(--color-emergency-subtle);
+  color: var(--color-emergency);
+  border: 1px solid var(--color-emergency-wash);
+}
+
+/* ═══════════ Medical Disclaimer ═══════════ */
+
+.disclaimer-bar {
+  background-color: var(--color-amber-subtle);
+  border: 1px solid var(--color-amber-wash);
+  color: var(--color-amber);
+}
+
+/* ═══════════ Animations ═══════════ */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Calm EKG-style pulse for loading states */
+@keyframes vitals-pulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.35s ease-out forwards;
+}
+
+.animate-vitals-pulse {
+  animation: vitals-pulse 1.8s ease-in-out infinite;
+}
+
+/* Stagger delays */
+.stagger-1 {
+  animation-delay: 0.08s;
+}
+
+.stagger-2 {
+  animation-delay: 0.16s;
+}
+
+.stagger-3 {
+  animation-delay: 0.24s;
+}
+
+.stagger-4 {
+  animation-delay: 0.32s;
+}
+
+.stagger-5 {
+  animation-delay: 0.4s;
+}
+
+/* ═══════════ Reduced Motion ═══════════ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ═══════════ Divider (thin rule) ═══════════ */
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+}
+
+/* ═══════════ Selection ═══════════ */
+
+::selection {
+  background-color: var(--color-teal-subtle);
+  color: var(--color-ink);
+}
