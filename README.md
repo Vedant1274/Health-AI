@@ -499,4 +499,4 @@ npm run dev
 > **IMPORTANT MEDICAL NOTICE:**  
 > **HealthAI Next** is an assistive software tool designed for informational and educational purposes only. It is **not** a certified medical device and **does not** provide definitive medical diagnoses, clinical prescriptions, or healthcare treatment plans.
 >
-> All AI-generated analyses, test suggestions, and parameter flags should always be verified by a licensed medical practitioner. If you or someone around you is facing a severe health crisis, chest pain, difficulty breathing, or severe bleeding, immediately call local emergency services (e.g., 108 / 911) or visit the nearest emergency room.
+> All AI-generated analyses, test suggestions, and parameter flags should always be verified by a licensed medical practitioner. If you or someone around you is facing a severe health crisis, chest pain, difficulty breathing, or severe bleeding, immediately call local emergency services (e.g., 108 / 112) or visit the nearest emergency room.
